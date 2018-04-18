@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head lang="en" th:replace="layout :: head">  
+</head>
+<body>
+	<div th:replace="layout :: nav"></div>
+    <br></br>
+
+    <!-- Page Content -->
+    <div class="container">
+		<div class="row">
+        <div class="col-md-12">
+        
+            <div class="panel-group" id="accordion">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h2 th:text="'Room ' + ${roomName}" class="panel-title" >
+                            <a   data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><span >
+                            </span  ></a>
+                        </h2>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                        <form name="booking"  class="form-group" th:object="${id_room}" th:action="@{/employee/book/room/}" method="post">
+                        	
+                            <div class="row">
+                                <div class="col-md-12">
+                                	
+                                    <div class="form-group">
+                                        <input type="hidden" class="form-control"  th:value="${idUser}" name="idUser" />
+                                    </div>
+      
+                                    <label class="col-sm-9 control-label">Time:</label>
+                                    <div class="form-group">
+                                    	<div class="input-group date form_datetime col-md-9"  data-date-format="dd/mm/yyyy hh:ii " data-link-field="dtp_input1">
+						                    <input class="form-control" size="16" type="text" value="" name="start" placeholder="Choose start Booking" required="required" />
+						                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+											<span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+						                </div>
+										<input type="hidden" id="dtp_input1" value="" /><br/>
+                                        
+                                    </div>
+                                    
+                                    
+              
+                                    <div class="form-group">
+                                    	<div class="input-group date form_datetime col-md-9"  data-date-format="dd/mm/yyyy hh:ii" data-link-field="dtp_input1">
+						                    <input class="form-control" size="16" type="text" value="" name="end" placeholder="Choose end Booking" required="required" />
+						                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+											<span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+						                </div>
+										<input type="hidden" id="dtp_input1" value="" /><br/>
+                                        
+                                    </div>
+                                    <br/>
+                                    <br/>
+                                    <div  th:if="${message2} and ${cek} " class="form-group alert alert-danger"  th:each="c:${cek}">
+                                    
+											<div class="form-horizontal">
+											 <div  class="form-group">
+		                                    	<label  class="control-label col-md-2"><strong>This room booked by: </strong></label>
+		                                    </div>
+		                                    
+												<div class="form-group">
+											        <label class="control-label col-md-2">Department</label>
+											        <div class="col-md-4">
+											        	<input  th:value="${c.department}" class="form-control" disabled="disabled" />
+											        </div>
+											        <label class="control-label col-md-1">PIC</label>
+											        <div class="col-md-3">
+											        	<input type="text" th:value="${c.pic}" class="form-control" disabled="disabled" />
+											        </div>
+										        </div>
+										        <div class="form-group">
+											        <label class="control-label col-md-2">Start</label>
+											        <div class="col-md-3">
+											        	<input type="text" th:value="${c.start}" class="form-control" disabled="disabled" />
+											        </div>
+											        <label class="control-label col-md-2">End</label>
+											        <div class="col-md-3">
+											        	<input type="text" th:value="${c.end}" class="form-control" disabled="disabled" />
+											        </div>
+										        </div>
+										       
+										        <div class="form-group">
+											        <label class="control-label col-md-2">Email</label>
+											        <div class="col-md-3">
+											        	<input  th:value="${c.email}" class="form-control" disabled="disabled" />
+											        </div>
+											        <label class="control-label col-md-2">Contact</label>
+											        <div class="col-md-3">
+											        	<input  th:value="${c.noTelepon}" class="form-control" disabled="disabled"/>
+											        </div>
+										        </div>
+										        
+									        </div>
+									</div>
+									<br/>
+                                    <br/>
+                                    <div  th:if="${message} " class="form-group alert alert-danger">
+  										<strong  th:utext="${message}" ></strong> 
+									</div>
+									
+									
+
+                                    <label class="col-sm-9 control-label">Used For:</label>
+                                    <div class="form-group">
+                                        <textarea    id="time" class="form-control" placeholder=" Used for" name="about" required="required" ></textarea>
+                                    </div>
+                                    
+                                    <label class="col-sm-9 control-label">By Department:</label>
+                                    <div class="form-group">
+                                        <input    id="time" class="form-control" placeholder="add department" name="department" th:value="${departmentUser}" required="required" />
+                                        
+                                    </div>
+                                    
+                                    <!--  <label class="col-sm-9 control-label">Pic Meeting:</label>
+                                    <div class="form-group">
+                                        <input    id="time" class="form-control" placeholder="add Pic" name="pic"  required="required" />
+                                        
+                                    </div>-->
+                                    
+                                    
+                                     <button type="submit" class="btn btn-success btn-sm" >
+                                          <span class="glyphicon glyphicon-floppy-disk"></span>Save</button>
+                                     </div>
+                                    
+                                    
+                             
+              
+                                </div>
+                                
+
+                          </form>
+                          
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+                     
+              
+
+ 
+
+	<div th:replace="layout :: footer"></div>
+	<div th:replace="layout :: script"></div>     
+
+</div>
+</body>
+
+</html>

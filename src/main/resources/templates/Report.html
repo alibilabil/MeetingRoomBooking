@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sd="http://www.thymeleaf.org/spring-data">
+
+<head lang="en" th:replace="layout :: head">
+
+
+</head>
+
+<body>
+	<div th:replace="layout :: nav"></div>
+	<br></br>
+		
+		
+		<div>
+		
+		
+		
+		
+		<div class="row">
+  		<div class="table-responsive col-md-8 st" style="margin-left: 50px;">
+      		<dl >
+  			<dt>
+    			Persentase Penggunaan Ruangan Berdasarkan Bulan
+  			</dt>
+  			<dd th:each="b2 : ${countBookingPersen2}" th:class="'percentage percentage-'+${b2.value}"><span class="text" th:text="${b2.Key}+' : '+${b2.value}+'%'"></span></dd>
+  
+		</dl>
+  		</div>
+  		<div class="table-responsive col-md-3">
+  		<form  th:action="@{/admin/result}" >
+            	<label  class="col-sm-12 control-label"> Month and Year  </label>
+				
+				
+				
+				
+				<div  class="input-group date form_yearmonth" data-date="" data-date-format="yyyy-mm" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                    <input class="form-control" size="10" type="text"  th:value="${selectedDate}" name="showByDate3" required="required"  />
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+					<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+					<input type="hidden" id="dtp_input2" value="" />
+				<div >            
+            		<button type="submit" class="btn btn-success btn-sm" >
+                	<span></span>Show</button>
+                
+            	</div>
+                </div>
+                
+				
+            </form>
+      		<table class="table table-striped table-bordered table-list" id="example" style=" margin-top: 8px; margin-left: -20px;" >
+     		
+ 		 	<tr>
+ 		 		<th>Room</th>
+ 		 		<th>Used</th>
+ 		 		
+ 		 	</tr>
+ 		 	<tr th:each="b2 : ${countBooking2}" >
+ 		 		<td align="center" th:text=" ${b2.key}"></td>
+ 		 		<td align="center" th:text=" ${b2.value}"></td>
+ 		 	</tr>
+ 		 	<tr  >
+ 		 		<td align="center">Total</td>
+ 		 		<td align="center" th:text=" ${total2}"></td>
+ 		 	</tr>
+			</table>
+
+  		</div>
+		</div>
+		<br/><hr class="style4"/><hr class="style2"/><hr class="style2"/>
+		
+		
+		<div class="row">
+  		<div class="table-responsive col-md-8 st" style="margin-left: 50px;">
+      		<dl >
+  			<dt>
+    			Persentase Penggunaan Ruangan disetiap Bulan
+  			</dt>
+  			<dd th:class="'percentage percentage-'+${cmp1}"><span class="text" th:text="'January: '+${cmp1}+'%'"></span></dd>
+  			<dd th:class="'percentage percentage-'+${cmp2}"><span class="text" th:text="'February: '+${cmp2}+'%'"></span></dd>
+  			<dd th:class="'percentage percentage-'+${cmp3}"><span class="text" th:text="'Maret: '+${cmp3}+'%'"></span></dd>
+  			<dd th:class="'percentage percentage-'+${cmp4}"><span class="text" th:text="'April: '+${cmp4}+'%'"></span></dd>
+  			<dd th:class="'percentage percentage-'+${cmp5}"><span class="text" th:text="'Mei: '+${cmp5}+'%'"></span></dd>
+  			<dd th:class="'percentage percentage-'+${cmp6}"><span class="text" th:text="'Juni: '+${cmp6}+'%'"></span></dd>
+  			<dd th:class="'percentage percentage-'+${cmp7}"><span class="text" th:text="'Juli: '+${cmp7}+'%'"></span></dd>
+  			<dd th:class="'percentage percentage-'+${cmp8}"><span class="text" th:text="'Agustus: '+${cmp8}+'%'"></span></dd>
+  			<dd th:class="'percentage percentage-'+${cmp9}"><span class="text" th:text="'September: '+${cmp9}+'%'"></span></dd>
+  			<dd th:class="'percentage percentage-'+${cmp10}"><span class="text" th:text="'Oktober: '+${cmp10}+'%'"></span></dd>
+  			<dd th:class="'percentage percentage-'+${cmp11}"><span class="text" th:text="'November: '+${cmp11}+'%'"></span></dd>
+  			<dd th:class="'percentage percentage-'+${cmp12}"><span class="text" th:text="'Desember: '+${cmp12}+'%'"></span></dd>
+  		
+  
+		</dl>
+  		</div>
+  		<div class="table-responsive col-md-3">
+  		<form  th:action="@{/admin/result}" >
+            	<label  class="col-sm-12 control-label"> Year  </label>
+				
+				
+				
+				
+				<div  class="input-group date form_a" data-date="" data-date-format="yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                    <input class="form-control" size="10" type="text"  th:value="${selectedDate}" name="showByYear" required="required"  />
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+					<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+					<input type="hidden" id="dtp_input2" value="" />
+				<div >            
+            		<button type="submit" class="btn btn-success btn-sm" >
+                	<span></span>Show</button>
+                
+            	</div>
+                </div>
+                
+				
+            </form>
+      		<table class="table table-striped table-bordered table-list" id="example" style=" margin-top: 8px; margin-left: -20px;" >
+     		
+ 		 	<tr>
+ 		 		<th>Month</th>
+ 		 		<th>Used</th>
+ 		 		
+ 		 	</tr>
+ 		 	<tr  >
+ 		 		<td align="center">January</td>
+ 		 		<td align="center" th:text="${cm1}"></td>	
+ 		 	</tr>
+ 		 	<tr  >
+ 		 		<td align="center" >February</td>
+ 		 		<td align="center" th:text="${cm2}"></td>	
+ 		 	</tr>
+ 		 	<tr  >
+ 		 		<td align="center" >Maret</td>
+ 		 		<td align="center" th:text="${cm3}"></td>	
+ 		 	</tr>
+ 		 	<tr  >
+ 		 		<td align="center" >April</td>
+ 		 		<td align="center" th:text="${cm4}"></td>	
+ 		 	</tr>
+ 		 	<tr  >
+ 		 		<td align="center" >Mei</td>
+ 		 		<td align="center" th:text="${cm5}"></td>	
+ 		 	</tr>
+ 		 	<tr  >
+ 		 		<td align="center" >Juni</td>
+ 		 		<td align="center" th:text="${cm6}"></td>	
+ 		 	</tr>
+ 		 	<tr  >
+ 		 		<td align="center" >Juli</td>
+ 		 		<td align="center" th:text="${cm7}"></td>	
+ 		 	</tr>
+ 		 	<tr  >
+ 		 		<td align="center" >Agustus</td>
+ 		 		<td align="center" th:text="${cm8}"></td>	
+ 		 	</tr>
+ 		 	<tr  >
+ 		 		<td align="center" >September</td>
+ 		 		<td align="center" th:text="${cm9}"></td>	
+ 		 	</tr>
+ 		 	<tr  >
+ 		 		<td align="center" >Oktober</td>
+ 		 		<td align="center" th:text="${cm10}"></td>	
+ 		 	</tr>
+ 		 	<tr  >
+ 		 		<td align="center" >November</td>
+ 		 		<td align="center" th:text="${cm11}"></td>	
+ 		 	</tr>
+ 		 	<tr  >
+ 		 		<td align="center" >Desember</td>
+ 		 		<td align="center" th:text="${cm12}"></td>	
+ 		 	</tr>
+ 		 	<tr  >
+ 		 		<td align="center" >Total</td>
+ 		 		<td align="center" th:text="${total3}" ></td>	
+ 		 	</tr>
+			</table>
+
+  		</div>
+		</div>
+	
+	<br/><hr class="style2"/><hr class="style2"/><hr class="style2"/>
+	
+	<div class="row">
+  		<div class="table-responsive col-md-8 st" style="margin-left: 50px;">
+      		<dl >
+  			<dt>
+    			Persentase Penggunaan Seluruh Ruangan
+  			</dt>
+  			<dd th:each="b1 : ${countBookingPersen}" th:class="'percentage percentage-'+${b1.value}"><span class="text" th:text="${b1.Key}+' : '+${b1.value}+'%'"></span></dd>
+  
+		</dl>
+  		</div>
+  		<div class="table-responsive col-md-3">
+      		<table class="table table-striped table-bordered table-list" id="example" style=" margin-top: 58px; margin-left: -20px;" >
+     		
+ 		 	<tr>
+ 		 		<th>Room</th>
+ 		 		<th>Used</th>
+ 		 		
+ 		 	</tr>
+ 		 	<tr th:each="b1 : ${countBooking1}" >
+ 		 		<td align="center" th:text=" ${b1.key}"></td>
+ 		 		<td align="center" th:text=" ${b1.value}"></td>
+ 		 	</tr>
+ 		 	<tr  >
+ 		 		<td align="center">Total</td>
+ 		 		<td align="center" th:text=" ${total1}"></td>
+ 		 	</tr>
+			</table>
+
+  		</div>
+		</div>
+		
+	<br/><hr class="style2"/><hr class="style2"/><hr class="style2"/>
+	
+	
+	<div class="col-md-4">
+			<h4 align="center">List Pegawai yang Membatalkan Booking</h4>
+			<table class="table table-striped table-bordered table-list" id="example myScrollspy" style="width: 100%" >
+     		
+ 		 	<tr>
+ 		 		<th>employee</th>
+ 		 		<th>Canceled Booking</th>
+ 		 		
+ 		 	</tr>
+ 		 	<tr th:each="c : ${countCanceled}" >
+ 		 		<td align="center" th:each="e:${employee}"  th:if="${e.idEmployee.equals(c.key)}" th:text="${e.name}"></td> 		 		
+ 		 		<td align="center" th:text=" ${c.value}"></td>
+ 		 		</tr>
+			</table>
+			</div>
+		</div>
+		<br></br>
+		<br></br>
+		
+
+
+
+
+</body>
+<div th:replace="layout :: footer"></div>
+<div th:replace="layout :: script"></div>
+</html>

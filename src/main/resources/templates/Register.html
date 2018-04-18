@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head lang="en" th:replace="layout :: head">
+</head>
+
+<body>
+	<div th:replace="layout :: nav"></div>
+	<br></br>
+
+    
+    <div class="container">
+		<div class="row">
+        <div class="col-md-12">
+            <div class="panel-group" id="accordion">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a th:if="${create == true}" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><span >
+                            </span>Register User</a>
+                            <a th:if="${edit==true}" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><span >
+                            </span>Edit Data User</a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                        <form class="form-group" th:object="${Employee}" th:action="@{/admin/create/employee}" method="post">
+                        	<input type="hidden" th:field="*{idEmployee}"/>
+                            <div class="row">
+                                <div class="col-md-12">
+                                <div class="form-group">
+                                	<label class="col-sm-2 control-label">Name:</label>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control" placeholder="Add Name" th:field="*{name}" required="required" />
+                                    </div>
+                                    
+                                    <label class="col-sm-2 control-label">Department:</label>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control" placeholder="Add Department" th:field="*{department}" required="required" />
+                                    </div>
+                                    
+                                  </div>  
+                                  <div class="form-group">
+                                    <label class="col-sm-2 control-label">Email:</label>
+                                    <div class="col-md-4">
+                                        <input type="email" class="form-control" placeholder="Add Email" th:field="*{email}"  />
+                                    	
+                                    </div>
+                                    <label class="col-sm-2 control-label">No Telepon:</label>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control" placeholder="Add No Telepon" th:field="*{noTelepon}" required="required" />
+                                    </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                    <label class="col-sm-2 control-label">Nik:</label>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control" placeholder="Add Nik as Username" th:field="*{username}" required="required" />
+                                    </div>
+                                    <label class="col-sm-2 control-label">Password:</label>
+                                    <div class="col-md-4">
+                                        <input type="password" class="form-control" placeholder="Add Password" th:field="*{password}" required="required" />
+                                    </div>
+                                    </div>
+                                    <div class="form-group">
+                                    <label class="col-sm-2 control-label">Role:</label>
+                                    <div class="col-md-4">
+                                        <select class="form-control" required="required" th:field="*{role}" >
+								        <option value="admin">admin</option>
+								        <option value="employee">employee</option>
+								    </select>
+								    
+                                    </div>
+                                 	</div>
+                                    
+                                    
+                                    <div class="form-group">
+                                    <div class="col-md-1">
+                                     <button  type="submit" class="btn btn-success btn-sm">
+                                          <span class="glyphicon glyphicon-floppy-disk"></span>Save</button>
+                                     </div>
+                                     </div>
+                                     </div>
+                                </div>
+                            
+                          </form>
+                          
+                          
+                          
+                            
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+ 
+	<div th:replace="layout :: footer"></div>
+	<div th:replace="layout :: script"></div>
+    </div>
+
+
+</body>
+
+</html>

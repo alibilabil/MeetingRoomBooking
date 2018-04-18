@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head lang="en" th:replace="layout :: head">
+</head>
+
+<body>
+	<div th:replace="layout :: nav"></div>
+	<br></br>
+
+    
+    <div class="container">
+		<div class="row">
+        <div class="col-md-12">
+            <div class="panel-group" id="accordion">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a th:if="${create == true}" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><span >
+                            </span>POST NEW ROOM</a>
+                            <a th:if="${edit==true}" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><span >
+                            </span>EDIT ROOM</a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                        <form class="form-group" th:object="${Room}" th:action="@{/admin/create/room}" method="post">
+                        	<input type="hidden" th:field="*{idRoom}"/>
+                            <div class="row">
+                                <div class="col-md-12">
+                                	<label class="col-sm-9 control-label">Room Name:</label>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Add Room Name" th:field="*{roomName}" required="required" />
+                                    </div>
+                                    <label class="col-sm-9 control-label">Floor:</label>
+                                    <div class="form-group">
+                                        <input type="number" class="form-control" placeholder="Add Floor" th:field="*{floor}" required="required" />
+                                    </div>
+                                    
+                                    
+                                     <button type="submit" class="btn btn-success btn-sm">
+                                          <span class="glyphicon glyphicon-floppy-disk"></span>Save</button>
+                                     </div>
+                                    
+                                </div>
+                            
+                          </form>
+                          
+                            
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+ 
+	<div th:replace="layout :: footer"></div>
+	<div th:replace="layout :: script"></div>
+    </div>
+
+
+</body>
+
+</html>
